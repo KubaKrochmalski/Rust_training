@@ -1,0 +1,1 @@
+This git repository is to learn RUST programming language from scratch.
