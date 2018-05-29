@@ -13,11 +13,14 @@ fn main() {
 
     //Return from function
     let x = get_five();
-    println!("The value of x is: {}", x);
+    println!("The new x is: {}", x);
+
+    let x = plus_one(x);
+    println!("The incremented x is: {}", x);
 }
 
 fn function(val: i32) {
-    println!("Another function's value: {}", val);
+    println!("Function's value: {}", val);
 }
 
 fn another_function(val: i32, text: String) {
@@ -27,4 +30,8 @@ fn another_function(val: i32, text: String) {
 
 fn get_five() -> i32 {
     5
+}
+
+fn plus_one(val: i32) -> i32 {
+    val + 1
 }
