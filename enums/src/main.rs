@@ -12,7 +12,25 @@ struct IPAdd {
 enum IPAddress {
     V4(u8, u8, u8, u8),
     V6(String),
-} 
+}
+
+enum Message {
+    Quit,
+    Move {x: i32, y: i32},
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&self) {
+        match self {
+            Message::Quit => println!("Quitting..."),
+            Message::Move{x, y} => println!("Moving to [{}, {}]", x, y),
+            Message::Write(text) => println!("Writing some text: \"{}\"", text),
+            Message::ChangeColor(r, g, b) => println!("Changing color to: ({}, {}, {})", r, g, b),
+        }
+    }
+}
 
 fn main() {
     // Creating instance of an enum
@@ -37,4 +55,15 @@ fn main() {
     if let IPAddress::V6(address) = work {
         println!("Work's IP: {}", address);
     }
+
+    let msg = Message::Move {x: 3, y: 7};
+    msg.call();
+    let msg = Message::Write(String::from("HELLO!"));
+    msg.call();
+    let msg = Message::ChangeColor(137, 64, 112);
+    msg.call();
+
+    // Using an Option enum
+    let some_number = Some(48);
+    let absent_numbet : Option<i32> = None;
 }
